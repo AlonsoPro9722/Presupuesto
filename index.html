@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO: Esto ayuda a que te encuentren en Google -->
+    <title>Calculadora de Presupuestos para Freelancers | Generador PDF Gratis</title>
+    <meta name="description" content="Crea presupuestos profesionales 'Pixel Perfect' con logo y colores personalizados. Ideal para desarrolladores y diseñadores freelance.">
+    <meta name="keywords" content="calculadora presupuesto, freelance, desarrollador web, generador pdf, presupuesto profesional">
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Panel de Control -->
+        <section class="controls">
+            <h2>Configuración de Negocio</h2>
+            
+            <div class="input-group">
+                <label>Tu Logo</label>
+                <input type="file" id="logoInput" accept="image/*">
+            </div>
+
+            <div class="input-group">
+                <label>Nombre de tu Empresa / Tu Nombre</label>
+                <input type="text" id="yourNameInput" placeholder="Ej: Alonso Web Studio">
+            </div>
+
+            <div class="input-group">
+                <label>Color de Marca</label>
+                <input type="color" id="brandColor" value="#2563eb">
+            </div>
+
+            <hr>
+            
+            <div class="input-group">
+                <label>Nombre del Cliente</label>
+                <input type="text" id="clientName" placeholder="Nombre del cliente">
+            </div>
+
+            <div id="servicesContainer">
+                <label>Servicios</label>
+                <!-- Aquí se añadirán dinámicamente las filas de servicios -->
+            </div>
+            
+            <button id="addServiceBtn" class="secondary-btn">+ Añadir Servicio</button>
+
+            <div class="input-group">
+                <label>Impuesto / IVA (%)</label>
+                <input type="number" id="taxInput" value="0" min="0">
+            </div>
+
+            <button id="downloadBtn">Descargar Presupuesto PDF</button>
+        </section>
+
+        <!-- Previsualización de la Factura -->
+        <section class="preview-area">
+            <div class="invoice-box" id="invoice">
+                <div class="invoice-header">
+                    <div class="header-top">
+                        <div id="logoPreviewContainer">
+                            <img id="logoPreview" src="" alt="Logo" style="display: none;">
+                            <h2 id="viewYourName">TU EMPRESA</h2>
+                        </div>
+                        <div class="title-area">
+                            <h1>PRESUPUESTO</h1>
+                            <p id="date"></p>
+                        </div>
+                    </div>
+                    <div class="brand-line"></div>
+                </div>
+
+                <div class="invoice-body">
+                    <p class="client-info"><strong>Para:</strong> <span id="viewClient">---</span></p>
+                    
+                    <table class="invoice-table">
+                        <thead>
+                            <tr>
+                                <th>Descripción</th>
+                                <th class="text-center">Horas</th>
+                                <th class="text-right">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoiceTableBody">
+                            <!-- Filas generadas por JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="invoice-footer">
+                    <div class="total-wrap">
+                        <div class="row"><span>Subtotal:</span> <span id="viewSubtotal">$0.00</span></div>
+                        <div class="row"><span>Impuestos:</span> <span id="viewTax">$0.00</span></div>
+                        <div class="row main-total"><span>Total Final:</span> <h2 id="finalTotal">$0.00</h2></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
